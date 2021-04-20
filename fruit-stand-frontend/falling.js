@@ -13,6 +13,8 @@ let blueberryImg = document.createElement('img')
 blueberryImg.src = 'blueberry.png'
 let strawberryImg = document.createElement('img')
 strawberryImg.src = 'strawberry.png'
+let stupidRoachImg = document.createElement('img')
+stupidRoachImg.src = 'Squashed-Roach.png'
 
 let numOfObjects = 30
 let objects = []
