@@ -15,6 +15,8 @@ let blueberryImg = document.createElement('img')
 blueberryImg.src = 'blueberry.png'
 let strawberryImg = document.createElement('img')
 strawberryImg.src = 'strawberry.png'
+let stupidRoachImg = document.createElement('img')
+stupidRoachImg.src = 'Squashed-Roach.png'
 
 let numOfObjects = 30
 let objects = []
@@ -94,9 +96,21 @@ function Basket(x,y) {
     this.show = function(){
         context.drawImage(basketImg,this.x,this.y,150,100)
     }
+   this.left = function(){
+       this.x = this.x-10
+   }
+   this.right = function(){
+    this.x = this.x+10
 }
 
-let basket = new Basket(700,800)
+}
+
+let basket = new Basket(200,400)
+
+// window.addEventListener("keydown", function(e) {
+//     console.log(e.key);
+// })
+ 
 
 
 for (let i=0;i < numOfObjects; i++){
@@ -116,13 +130,14 @@ const draw = () => {
     context.fillStyle = 'black'
     // context.drawImage(bugImg,0,0)
     context.fillRect(0, 0, canvas.width, canvas.height)
-    basket.show()
+    
 
 
     for(let i=0;i < numOfObjects; i++){
         objects[i].show()
         objects[i].fall()
     }
+    basket.show()
 }
 
 const update = () => {
@@ -132,5 +147,17 @@ const update = () => {
 
 document.addEventListener('DOMContentLoaded', () => {
     update()
-    console.log(basket)
+    window.addEventListener("keydown", function(e) {
+        console.log(basket.x);
+        console.log(basket)
+        if (e.key == "ArrowLeft") {
+            basket.left()
+        }
+        else if (e.key == "ArrowRight"){
+            basket.right()
+        }
+            
+
+    })
+
 })
