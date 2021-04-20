@@ -32,8 +32,8 @@ ActiveRecord::Schema.define(version: 2021_04_20_142145) do
   end
 
   create_table "ingredients", force: :cascade do |t|
-    t.integer "fruit_id", null: false
-    t.integer "bug_id", null: false
+    t.integer "fruit_id"
+    t.integer "bug_id"
     t.integer "basket_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
