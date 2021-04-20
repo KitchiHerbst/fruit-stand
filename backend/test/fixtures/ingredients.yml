@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  fruit: one
+  bug: one
+  basket: one
+
+two:
+  fruit: two
+  bug: two
+  basket: two
