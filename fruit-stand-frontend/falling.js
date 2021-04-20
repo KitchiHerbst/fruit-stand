@@ -26,7 +26,19 @@ function Fruit(x,y) {
     this.x = x
     this.y = y
 
+
+
     this.fall = function(){
+        let dir = Math.floor(Math.random()*3)
+if(dir == 0){
+    this.x = this.x
+}
+if(dir == 1){
+    this.x = this.x + 2
+}
+if(dir == 2){
+    this.x = this.x - 2
+}
         this.y = this.y+1
         if(this.y > canvas.height){
             this.y = 0
@@ -49,7 +61,16 @@ function Bug(x,y) {
     this.x = x
     this.y = y
 
+
     this.fall = function(){
+        let dir = Math.floor(Math.random()*3)
+if(dir == 0){
+    this.x = this.x
+} else if (dir == 1){
+    this.x = this.x + 2
+}else{
+    this.x = this.x - 2
+}
         this.y = this.y+1
         if(this.y > canvas.height){
             this.y = 0
@@ -81,6 +102,7 @@ for (let i=0;i < numOfObjects; i++){
 const draw = () => {
     context.fillStyle = 'black'
     context.fillRect(0, 0, canvas.width, canvas.height)
+
     for(let i=0;i < numOfObjects; i++){
         objects[i].show()
         objects[i].fall()
