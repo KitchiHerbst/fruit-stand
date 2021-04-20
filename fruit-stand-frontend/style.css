@@ -1,17 +1,11 @@
-#basket {
-    /* background-color: rgb(198, 236, 58);  */
-    height: 20px;
-    position: absolute;
-    width: 40px;
+.column {
+    float: left;
+    width: 33.33%;
   }
-
-  #game {
-    background-color: rgb(226, 178, 192);
-    background-image: url('https://i.pinimg.com/originals/bd/6b/15/bd6b157fb36ca4ebb6328598ed490e27.png');
-    height: 400px;
-    margin: 0 auto;
-    overflow: hidden;
-    position: relative;
-    text-align: center;
-    width: 400px;
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
   }

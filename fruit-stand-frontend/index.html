@@ -8,33 +8,45 @@
     <script src="./basket.js"></script>
     <link rel="stylesheet" type="text/css" href="style.css">
     <!-- <script src="./index.js"></script> -->
-    <canvas id='canvas'></canvas>
+    <div class='row'>
+            <canvas id='canvas'  width="200" height="100" style=" background: url('https://i.pinimg.com/originals/bd/6b/15/bd6b157fb36ca4ebb6328598ed490e27.png')"></canvas>
+            <button>Play Now</button>
+    </div>
+    
     <script src="./falling.js"></script>
     <title>Document</title>
 </head>
 <body>
-    <div class='container'>
-        <form class='new-player-form'>
-            <h3>Enter Your Name</h3>
-            <input
-                type='text'
-                name='name'
-                value=''
-                placeholder='Enter Name Here'
-                class='input-text'
-            />
-            <br />
-            <input
-                type='submit'
-                name='submit'
-                value='Les Gooo'
-                class='submit'
-            />
-        </form>
+    <div class = 'row'>
+        <div class = 'column'>
+            <div class='container'>
+                <form class='new-player-form'>
+                    <h3>Enter Your Name</h3>
+                    <input
+                    type='text'
+                    name='name'
+                    value=''
+                    placeholder='Enter Name Here'
+                    class='input-text'
+                    />
+                    <br />
+                    <input
+                    type='submit'
+                    name='submit'
+                    value='Les Gooo'
+                    class='submit'
+                    />
+                </form>
+            </div>
+        </div>
+        <div class = 'column'>
+            <h3>Column 2</h3>
+        </div>
+        <div class = 'column'>
+            <h3>Column 3</h3>
+        </div>
     </div>
-<div id="game">
-    <img id="basket" src="5a0214fe18e87004f1ca4383.png" style="bottom: 0px; left: 180px;" >
-</div>
+        
 </body>
 </html>
 
