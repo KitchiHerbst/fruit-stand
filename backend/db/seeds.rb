@@ -5,3 +5,25 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+# User.destroy_all
+# Fruit.destroy_all
+# Bug.destroy_all
+# Basket.destroy_all
+# Ingredient.destroy_all
+
+jose = User.create(name: 'Jose')
+donovan = User.create(name: 'Donovan')
+triston = User.create(name: 'Triston')
+
+banana = Fruit.create(name: 'Banana')
+papaya = Fruit.create(name: 'Papaya')
+pear = Fruit.create(name: 'Pear')
+
+roach = Bug.create(name: 'Lil Roach')
+
+basket1 = Basket.create(user: User.first)
+
+ing1 = Ingredient.create(basket: Basket.first, fruit: Fruit.first, bug: nil)
+ing2 = Ingredient.create(basket: Basket.first, fruit: Fruit.second, bug: nil)
+ing3 = Ingredient.create(basket: Basket.first, fruit: Fruit.third, bug: nil)
+ing4 = Ingredient.create(basket: Basket.first, bug: Bug.first, fruit: nil)
