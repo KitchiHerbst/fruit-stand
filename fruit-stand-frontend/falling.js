@@ -5,6 +5,8 @@ let canvas = document.getElementById('canvas')
 
 //setting the context to be 2d
 let context = canvas.getContext('2d')
+let basketImg = document.createElement('img')
+basketImg.src = '5a0214fe18e87004f1ca4383.png'
 
 //creating the images for the fruits
 let bananaImg = document.createElement('img')
@@ -26,24 +28,24 @@ function Fruit(x,y) {
     this.x = x
     this.y = y
 
-
-
     this.fall = function(){
         let dir = Math.floor(Math.random()*3)
-if(dir == 0){
-    this.x = this.x
-}
-if(dir == 1){
-    this.x = this.x + 2
-}
-if(dir == 2){
-    this.x = this.x - 2
-}
-        this.y = this.y+1
-        if(this.y > canvas.height){
-            this.y = 0
-            // objects.filter(fruit => fruit !== this)
+
+        if(dir == 0){
+            this.x = this.x
         }
+        if(dir == 1){
+            this.x = this.x + 2
+        }
+        if(dir == 2){
+            this.x = this.x - 2
+        }
+
+        this.y = this.y+1
+            if(this.y > canvas.height){
+                this.y = 0
+                // objects.filter(fruit => fruit !== this)
+            }
     }
     //should get me a random number between 0 - 2
     let randomNumber = Math.floor(Math.random()*imgArray.length)
@@ -61,21 +63,22 @@ function Bug(x,y) {
     this.x = x
     this.y = y
 
-
     this.fall = function(){
         let dir = Math.floor(Math.random()*3)
-if(dir == 0){
-    this.x = this.x
-} else if (dir == 1){
-    this.x = this.x + 2
-}else{
-    this.x = this.x - 2
-}
-        this.y = this.y+1
-        if(this.y > canvas.height){
-            this.y = 0
-            // objects.filter(bug => bug !== this)
+
+        if(dir == 0){
+            this.x = this.x
+        } else if (dir == 1){
+            this.x = this.x + 2
+        }else{
+            this.x = this.x - 2
         }
+
+        this.y = this.y+1
+            if(this.y > canvas.height){
+                this.y = 0
+                // objects.filter(bug => bug !== this)
+            }
     }
     
     
@@ -84,7 +87,16 @@ if(dir == 0){
     }
 }
 
+function Basket(x,y) {
+    this.x = x
+    this.y = y
 
+    this.show = function(){
+        context.drawImage(basketImg,this.x,this.y,150,100)
+    }
+}
+
+let basket = new Basket(700,800)
 
 
 for (let i=0;i < numOfObjects; i++){
@@ -99,9 +111,15 @@ for (let i=0;i < numOfObjects; i++){
 }
 
 
+
+// let background = document.createElement('img')
+
 const draw = () => {
     context.fillStyle = 'black'
+    // context.drawImage(bugImg,0,0)
     context.fillRect(0, 0, canvas.width, canvas.height)
+    basket.show()
+
 
     for(let i=0;i < numOfObjects; i++){
         objects[i].show()
@@ -113,6 +131,7 @@ const update = () => {
     draw()
     window.requestAnimationFrame(update)
 }
+
 document.addEventListener('DOMContentLoaded', () => {
     update()
 
