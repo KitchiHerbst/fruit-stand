@@ -110,8 +110,6 @@ for (let i=0;i < numOfObjects; i++){
     }
 }
 
-
-
 // let background = document.createElement('img')
 
 const draw = () => {
@@ -134,5 +132,5 @@ const update = () => {
 
 document.addEventListener('DOMContentLoaded', () => {
     update()
-
+    console.log(basket)
 })
