@@ -23,6 +23,7 @@ let objects = []
 // let numOfFruit = 30
 // let fruits = []
 
+
 //creating an array so that i can select a random fruit image when creating a new fruit
 let imgArray = [bananaImg,blueberryImg,strawberryImg]
 // creating the Fruit class so i can call on it later to create any number of fruits that i need
@@ -89,9 +90,9 @@ function Bug(x,y) {
     }
 }
 
-function Basket(x,y) {
-    this.x = x
-    this.y = y
+function Basket() {
+    this.x = canvas.width / 2
+    this.y = canvas.height - 80
 
     this.show = function(){
         context.drawImage(basketImg,this.x,this.y,150,100)
@@ -105,13 +106,7 @@ function Basket(x,y) {
 
 }
 
-let basket = new Basket(200,400)
-
-// window.addEventListener("keydown", function(e) {
-//     console.log(e.key);
-// })
- 
-
+let basket = new Basket()
 
 for (let i=0;i < numOfObjects; i++){
     let x = Math.floor(Math.random()*canvas.width)
@@ -159,5 +154,6 @@ document.addEventListener('DOMContentLoaded', () => {
             
 
     })
+    console.log(canvas.width)
 
 })
