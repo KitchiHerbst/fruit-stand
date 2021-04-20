@@ -5,9 +5,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
 const loadForm = (e) => {
     let nameForm = document.querySelector('.new-player-form')
-    nameForm.addEventListener('submit', (e) =>{
+    nameForm.addEventListener('submit', (e) => {
         e.preventDefault()
         let newName = e.target.name.value
+        console.log(newName)
         fetch('http://localhost:3000/users', {
             method: 'POST',
             headers: {
@@ -19,6 +20,6 @@ const loadForm = (e) => {
             })
         })
         .then(res => res.json())
-        .then(newPlayer => console.log(user.name))
+        .then(newPlayer => console.log(newPlayer))
     })
 }
