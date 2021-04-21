@@ -14,8 +14,12 @@ class UsersController < ApplicationController
     end
 
     def create
-        user = User.create(name: params[:name]).valid?
+        user = User.create(user_params)
         render json: user
         # user.errors.size
+    end
+
+    def user_params 
+        params.require(:user).permit(:name)
     end
 end

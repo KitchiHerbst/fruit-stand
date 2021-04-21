@@ -1,5 +1,7 @@
+let user = undefined
 document.addEventListener('DOMContentLoaded', () => {
-    load()
+
+    load(user)
     
     
     
@@ -7,8 +9,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-const load = () => {let body = document.getElementById('body')
-let head = document.getElementById('head')
+const load = (user) => {let body = document.getElementById('body')
+// let head = document.getElementById('head')
+
 body.innerHTML = 
 `<div class = 'row'>
         <div class = 'column'>
@@ -62,16 +65,19 @@ body.innerHTML =
             <h3>High Scores</h3>
         </div>
     </div>`
-    loadForm()
-    // loadNewPlayer()
-
-let gameButton = document.getElementById('game-button')
-gameButton.addEventListener('click', () => {
-    body.innerHTML = ''
-    body.innerHTML = `<div id='counter'>30s</div>
-    <div class='row' id="game">
-    <canvas id='canvas'  width="200" height="100" ></canvas>
-</div>`
+    loadForm(user)
     
-    playGame()
-})}
+// let gameButton = document.getElementById('game-button')
+// gameButton.addEventListener('click', () => {
+//     body.innerHTML = ''
+//     body.innerHTML = `<div id='counter'>30s</div>
+//     <div class='row' id="game">
+//     <canvas id='canvas'  width="200" height="100" ></canvas>
+// </div>`
+    
+//     playGame(user)
+// })
+
+
+}
+
