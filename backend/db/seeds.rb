@@ -7,23 +7,16 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 Basket.destroy_all
 User.destroy_all
-Fruit.destroy_all
-Bug.destroy_all
 Ingredient.destroy_all
 
 jose = User.create(name: 'Jose')
 donovan = User.create(name: 'Donovan')
 triston = User.create(name: 'Triston')
 
-banana = Fruit.create(name: 'Banana')
-papaya = Fruit.create(name: 'Papaya')
-pear = Fruit.create(name: 'Pear')
-
-roach = Bug.create(name: 'Lil Roach')
 
 basket1 = Basket.create(user: User.first)
 
-ing1 = Ingredient.create(basket: Basket.first, fruit: Fruit.first)
-ing2 = Ingredient.create(basket: Basket.first, fruit: Fruit.second)
-ing3 = Ingredient.create(basket: Basket.first, fruit: Fruit.third)
-ing4 = Ingredient.create(basket: Basket.first, bug: Bug.first)
+ing1 = Ingredient.create(basket: Basket.first, name: 'bug')
+ing1 = Ingredient.create(basket: Basket.first, name: 'bug')
+ing1 = Ingredient.create(basket: Basket.first, name: 'fruit')
+ing1 = Ingredient.create(basket: Basket.first, name: 'fruit')
