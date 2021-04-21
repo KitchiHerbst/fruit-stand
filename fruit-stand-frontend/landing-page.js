@@ -67,6 +67,7 @@ body.innerHTML =
     </div>`
     loadForm(user)
     
+    
 // let gameButton = document.getElementById('game-button')
 // gameButton.addEventListener('click', () => {
 //     body.innerHTML = ''

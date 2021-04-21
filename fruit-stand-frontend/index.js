@@ -1,8 +1,3 @@
-// document.addEventListener("DOMContentLoaded", () => {
-//     // movingBasket()
-//     // loadForm()
-// })
-
 const loadForm = (user) => {
     let nameForm = document.querySelector('.new-player-form')
     let existingNameForm = document.querySelector('.existing-player')
@@ -41,15 +36,10 @@ gameButton.addEventListener('click', () => {
     
     playGame(user)
 })
-        })
-        
-        
-        //create function that verifies if user is already in game or not
+        })//create function that verifies if user is already in game or not
     })
-    const loadNewPlayer = () =>{
-        let nameForm = document.querySelector('.new-player-form')
-        let errorElement = document.getElementById('error')
-        nameForm.addEventListener('submit', (e) => {
+   
+        existingNameForm.addEventListener('submit', (e) => {
             e.preventDefault()
             let messages = []
             let newName = e.target.name.value
@@ -60,23 +50,18 @@ gameButton.addEventListener('click', () => {
                 e.preventDefault()
                 errorElement.innerText = messages.join(', ')
             }
-            // console.log(newName)
-            fetch('http://localhost:3000/users', {
-                method: 'POST',
-                headers: {
-                    'Content-Type':'application/json',
-                    'Accept':'application/json'
-                },
-                body: JSON.stringify({
-                    name: newName
-                })
-            })
-            .then(res => res.json())
-            .then(newPlayer => renderPlayerCard(newPlayer.id))
-            //create function that verifies if user is already in game or not
+            // need to get array of all users
+            // need to check that input name matches name in db
+            //if name matches clear sign up log in and show user credentials (in same box)
+            //else not an existing user message and clear input to retype name
+
+
+
+        
+            allUsers(newName)
             })
         }
-    }
+    
     
 
 const renderPlayerCard = (newPlayer) => {
@@ -92,8 +77,28 @@ const renderPlayerCard = (newPlayer) => {
     playerScore.innerHTML = newPlayer.score
     // debugger
     container.append(playerHeader, playerScore)
+
     // console.log(newPlayer)
 }
+
+const allUsers = (newName) => {
+        fetch('http://localhost:3000/users')
+            .then(res => res.json())
+            .then(userData => renderUsers(userData, newName))
+}
+
+const renderUsers = (users, newName) => {
+    users.forEach(player => {
+        if (player.name === newName){
+            user = player
+            console.log(user)
+            
+        } 
+    })
+}
+
+
+
 
 
 //create header for player name 
