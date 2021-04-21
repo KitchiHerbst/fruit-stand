@@ -55,6 +55,7 @@ function Fruit(x,y) {
         this.y = this.y+randFall
             if(this.y > canvas.height - 10){
                 this.y = 0
+                this.x = Math.floor(Math.random()*canvas.width)
                 // objects.filter(fruit => fruit !== this)
                 // numOfObjects = numOfObjects + 1
             }
@@ -86,10 +87,11 @@ function Bug(x,y) {
         }else{
             this.x = this.x - 2
         }
-        let randFall = Math.floor(Math.random()*10)
+        let randFall = Math.floor(Math.random()*15)
         this.y = this.y+randFall
             if(this.y > canvas.height){
                 this.y = 0
+                this.x = Math.floor(Math.random()*canvas.width)
                 // objects.filter(bug => bug !== this)
             }
     }
