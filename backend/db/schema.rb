@@ -19,27 +19,12 @@ ActiveRecord::Schema.define(version: 2021_04_20_142145) do
     t.index ["user_id"], name: "index_baskets_on_user_id"
   end
 
-  create_table "bugs", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "fruits", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "ingredients", force: :cascade do |t|
-    t.integer "fruit_id"
-    t.integer "bug_id"
+    t.string "name"
     t.integer "basket_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["basket_id"], name: "index_ingredients_on_basket_id"
-    t.index ["bug_id"], name: "index_ingredients_on_bug_id"
-    t.index ["fruit_id"], name: "index_ingredients_on_fruit_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -50,6 +35,4 @@ ActiveRecord::Schema.define(version: 2021_04_20_142145) do
 
   add_foreign_key "baskets", "users"
   add_foreign_key "ingredients", "baskets"
-  add_foreign_key "ingredients", "bugs"
-  add_foreign_key "ingredients", "fruits"
 end

@@ -35,6 +35,7 @@ function Fruit(x,y) {
     this.y = y
     this.w = 50
     this.h = 50
+    this.name = 'fruit'
 
     this.fall = function(){
         let dir = Math.floor(Math.random()*3)
@@ -72,6 +73,7 @@ function Bug(x,y) {
     this.y = y
     this.w = 100
     this.h = 100
+    this.name = 'bug'
 
     this.fall = function(){
         let dir = Math.floor(Math.random()*3)
@@ -93,9 +95,6 @@ function Bug(x,y) {
     this.show = function(){
         context.drawImage(bugImg, this.x, this.y, 100, 100)
     }
-    // console.log(this.x + this.w)
-    // console.log(objects)
-
 }
 
 function Basket() {
@@ -113,6 +112,7 @@ function Basket() {
    this.right = function(){
        this.x = this.x+35
     }
+    // fetch('http://localhost:3000/baskets')
 }
 let basket = new Basket()
 
@@ -141,13 +141,36 @@ const update = () => {
     draw()
     function objectTouch() {
         objects.forEach(obj => {
-        console.log(obj)
+        // console.log(obj.name)
         let objRight = obj.x + obj.w
         let objBottom = obj.y + obj.h
         let basketRight = basket.x + basket.w
         let basketBottom = basket.y + basket.h
-        if(objRight > basket.x && basketRight > obj.x && objBottom > basket.y && basketBottom > obj.y) console.log(true);
-            else console.log(false);
+        
+        if(objRight > basket.x && basketRight > obj.x && objBottom > basket.y && basketBottom > obj.y){ 
+            objects.filter(obj => obj !== this)
+        let newIngredientName = obj.name
+        let newIngredientBasketId = 1
+      
+        let newIngredient = {
+            name: newIngredientName,
+            basket_id: newIngredientBasketId
+        }
+        confObj = {
+            method: 'POST',
+            headers: {
+              "Content-Type":"application/json",
+              "Accept":"application/json"
+              },
+              body: JSON.stringify(newIngredient)}
+        
+          fetch('http://localhost:3000/ingredients', confObj)
+              .then(res => res.json())
+              .then(data => console.log(data))
+                // console.log(obj);
+            }
+        
+        // else return false;
         // console.log(basket.x)
         })
     }
@@ -155,6 +178,7 @@ const update = () => {
     
     window.requestAnimationFrame(update)
 }
+
 document.addEventListener('DOMContentLoaded', () => {
     update()
     window.addEventListener("keydown", function(e) {
@@ -166,7 +190,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
         else if (e.key == "ArrowRight"){
-            if (basket.x < 1100){
+            if (basket.x < canvas.width){
                 basket.right()
             }
         }
