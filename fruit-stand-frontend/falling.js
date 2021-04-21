@@ -1,12 +1,14 @@
+
 //creating the canvas element so we can have moving objects on it
-const game = document.getElementById('game')
-const playBtn = document.createElement('button')
-playBtn.innerText='Start Game'
+// const game = document.getElementById('game')
+// const playBtn = document.createElement('button')
+// playBtn.innerText='Start Game'
+const playGame = () => {
 let canvas = document.getElementById('canvas')
     canvas.width = window.innerWidth
-    canvas.height = window.innerHeight
+    canvas.height = window.innerHeight - 30
     canvas.style.background = 'strawberry.png'
-    game.append(canvas, playBtn)
+    // game.append(canvas, playBtn)
 
 //setting the context to be 2d
 let context = canvas.getContext('2d')
@@ -23,7 +25,7 @@ strawberryImg.src = 'strawberry.png'
 let stupidRoachImg = document.createElement('img')
 stupidRoachImg.src = 'Squashed-Roach.png'
 
-let numOfObjects = 1
+let numOfObjects = 30
 let objects = []
 // let numOfFruit = 30
 // let fruits = []
@@ -49,7 +51,8 @@ function Fruit(x,y) {
             this.x = this.x - 2
         }
 
-        this.y = this.y+1
+        let randFall = Math.floor(Math.random()*10)
+        this.y = this.y+randFall
             if(this.y > canvas.height - 10){
                 this.y = 0
                 // objects.filter(fruit => fruit !== this)
@@ -83,8 +86,8 @@ function Bug(x,y) {
         }else{
             this.x = this.x - 2
         }
-
-        this.y = this.y+1
+        let randFall = Math.floor(Math.random()*10)
+        this.y = this.y+randFall
             if(this.y > canvas.height){
                 this.y = 0
                 // objects.filter(bug => bug !== this)
@@ -119,7 +122,7 @@ let basket = new Basket()
 
 for (let i=0;i < numOfObjects; i++){
     let x = Math.floor(Math.random()*canvas.width)
-    let y = Math.floor(Math.random()*canvas.height)
+    let y = Math.floor(Math.random()*canvas.height/2)
     let randNum = Math.floor(Math.random()*4)
     if(randNum == 1){
         objects[i] = new Bug(x,y)
@@ -141,13 +144,12 @@ const update = () => {
     draw()
     function objectTouch() {
         objects.forEach(obj => {
-        console.log(obj)
+        // console.log(obj)
         let objRight = obj.x + obj.w
         let objBottom = obj.y + obj.h
         let basketRight = basket.x + basket.w
         let basketBottom = basket.y + basket.h
-        if(objRight > basket.x && basketRight > obj.x && objBottom > basket.y && basketBottom > obj.y) console.log(true);
-            else console.log(false);
+        if(objRight > basket.x && basketRight > obj.x && objBottom > basket.y && basketBottom > obj.y);
         // console.log(basket.x)
         })
     }
@@ -155,20 +157,42 @@ const update = () => {
     
     window.requestAnimationFrame(update)
 }
-document.addEventListener('DOMContentLoaded', () => {
-    update()
-    window.addEventListener("keydown", function(e) {
-        // console.log(basket.x);
-        // console.log(basket)
-        if (e.key == "ArrowLeft") {
-            if (basket.x > 0){
-                basket.left()
-            }
+
+update()
+window.addEventListener("keydown", function(e) {
+    // console.log(basket.x);
+    // console.log(basket)
+    if (e.key == "ArrowLeft") {
+        if (basket.x > 0){
+            basket.left()
         }
-        else if (e.key == "ArrowRight"){
-            if (basket.x < 1100){
-                basket.right()
-            }
+    }
+    else if (e.key == "ArrowRight"){
+        if (basket.x < canvas.width){
+            basket.right()
         }
-    })
+    }
 })
+
+
+function countdown() {
+    var seconds = 30;
+    function tick() {
+        var counter = document.getElementById("counter");
+        seconds--;
+        counter.innerHTML = `${seconds}s`;
+        if( seconds > 0 ) {
+            setTimeout(tick, 1000);
+            // draw();
+            //    update();
+        } else {
+            alert("Game over");
+            // clearInterval(runGame);
+            // send to another page where they see their result
+            load()
+        }
+    }
+    tick();
+}
+countdown()
+}

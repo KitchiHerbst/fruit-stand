@@ -52,13 +52,13 @@ JSON responses
 
 
 ## MVP Deliverables
-1. user can login or create account
-2. fruit falls
-3. calculate high score from basket
-4. basket can catch fruit/bugs
+1. user can login or create account 
 5. user can edit name
+<!-- 2. fruit falls  -->
+3. basket can catch fruit/bugs
+4. calculate high score from basket
 6. Doesnt redirect or refresh page 
-7. timed rounds
+<!-- 7. timed rounds -->
 
 ### Stretch Goals
 1. can select a different basket skin
