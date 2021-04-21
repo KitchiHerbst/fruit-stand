@@ -20,8 +20,9 @@
     <div class = 'row'>
         <div class = 'column'>
             <div class='container'>
+                <div id='error'></div>
                 <form class='new-player-form'>
-                    <h3>Enter Your Name</h3>
+                    <h3>New Player Name</h3>
                     <input
                     type='text'
                     name='name'
@@ -33,7 +34,25 @@
                     <input
                     type='submit'
                     name='submit'
-                    value='Les Gooo'
+                    value='Create New Player'
+                    class='submit'
+                    />
+                </form>
+                <br>
+                <form class='player-login-form'>
+                    <h3>Existing Player Name</h3>
+                    <input
+                    type='text'
+                    name='name'
+                    value=''
+                    placeholder='Enter Name Here'
+                    class='input-text'
+                    />
+                    <br />
+                    <input
+                    type='submit'
+                    name='submit'
+                    value='Log In'
                     class='submit'
                     />
                 </form>
