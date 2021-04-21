@@ -47,8 +47,8 @@ function Fruit(x,y) {
         if(dir == 1){
             this.x = this.x + 2
         }
-        if(dir == 2){
-            this.x = this.x - 2
+        if(dir == 2){ 
+            this.x = this.x - 2 
         }
 
         let randFall = Math.floor(Math.random()*10)
@@ -59,6 +59,7 @@ function Fruit(x,y) {
                 // numOfObjects = numOfObjects + 1
             }
     }
+
     //should get me a random number between 0 - 2
     let randomNumber = Math.floor(Math.random()*imgArray.length)
     // need to change img to be a random image between the 3 fruits
