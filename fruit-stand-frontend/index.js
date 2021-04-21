@@ -3,7 +3,7 @@
 //     // loadForm()
 // })
 
-const loadForm = (e) => {
+const loadForm = (e, load) => {
     let nameForm = document.querySelector('.new-player-form')
     let errorElement = document.getElementById('error')
     nameForm.addEventListener('submit', (e) => {

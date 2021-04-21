@@ -12,6 +12,7 @@ let head = document.getElementById('head')
 body.innerHTML = 
 `<div class = 'row'>
         <div class = 'column'>
+        <div id='error></div>
             <div class='container'>
                 <form class='new-player-form'>
                     <h3>Enter Your Name</h3>
