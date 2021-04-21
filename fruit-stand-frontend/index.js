@@ -1,7 +1,7 @@
-document.addEventListener("DOMContentLoaded", () => {
-    // movingBasket()
-    loadForm()
-})
+// document.addEventListener("DOMContentLoaded", () => {
+//     // movingBasket()
+//     // loadForm()
+// })
 
 const loadForm = (e) => {
     let nameForm = document.querySelector('.new-player-form')
