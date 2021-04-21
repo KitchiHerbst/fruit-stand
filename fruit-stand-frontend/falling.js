@@ -3,7 +3,9 @@
 // const game = document.getElementById('game')
 // const playBtn = document.createElement('button')
 // playBtn.innerText='Start Game'
-const playGame = () => {
+const playGame = (user) => {
+console.log(user)
+
 let canvas = document.getElementById('canvas')
     canvas.width = window.innerWidth
     canvas.height = window.innerHeight - 30
@@ -25,7 +27,7 @@ strawberryImg.src = 'strawberry.png'
 let stupidRoachImg = document.createElement('img')
 stupidRoachImg.src = 'Squashed-Roach.png'
 
-let numOfObjects = 30
+let numOfObjects = 10
 let objects = []
 // let numOfFruit = 30
 // let fruits = []
@@ -38,6 +40,7 @@ function Fruit(x,y) {
     this.w = 50
     this.h = 50
     this.name = 'fruit'
+    this.collisionOccured = false
 
     this.fall = function(){
         let dir = Math.floor(Math.random()*3)
@@ -54,9 +57,10 @@ function Fruit(x,y) {
 
         let randFall = Math.floor(Math.random()*10)
         this.y = this.y+randFall
-            if(this.y > canvas.height - 10){
+            if(this.y > canvas.height - 100){
                 this.y = 0
                 this.x = Math.floor(Math.random()*canvas.width)
+                this.collisionOccured = false
                 // objects.filter(fruit => fruit !== this)
                 // numOfObjects = numOfObjects + 1
             }
@@ -79,6 +83,7 @@ function Bug(x,y) {
     this.w = 100
     this.h = 100
     this.name = 'bug'
+    this.collisionOccured = false
 
     this.fall = function(){
         let dir = Math.floor(Math.random()*3)
@@ -92,9 +97,10 @@ function Bug(x,y) {
         }
         let randFall = Math.floor(Math.random()*15)
         this.y = this.y+randFall
-            if(this.y > canvas.height){
+            if(this.y > canvas.height-100){
                 this.y = 0
                 this.x = Math.floor(Math.random()*canvas.width)
+                this.collisionOccured = false
                 // objects.filter(bug => bug !== this)
             }
     }
@@ -133,6 +139,26 @@ for (let i=0;i < numOfObjects; i++){
         objects[i] = new Fruit(x,y)
     }
 }
+
+let newBasketObject = undefined
+
+const newBasket = () => {
+    basketObject = {
+        user_id: user.id
+    }
+
+    fetch('http://localhost:3000/baskets', {
+        method: 'POST',
+        headers: {
+            'Content-Type':'application/json',
+            'Accept':'application/json'
+        },
+        body: JSON.stringify(basketObject)
+    })
+    .then(res => res.json())
+    .then(data => newBasketObject = data)
+}
+
 const draw = () => {
     context.fillStyle = 'black'
     // context.drawImage(bugImg,0,0)
@@ -145,47 +171,14 @@ const draw = () => {
 }
 const update = () => {
     draw()
-    function objectTouch() {
-        objects.forEach(obj => {
-        // console.log(obj)
-        let objRight = obj.x + obj.w
-        let objBottom = obj.y + obj.h
-        let basketRight = basket.x + basket.w
-        let basketBottom = basket.y + basket.h
-        
-        if(objRight > basket.x && basketRight > obj.x && objBottom > basket.y && basketBottom > obj.y){ 
-            objects.filter(obj => obj !== this)
-        let newIngredientName = obj.name
-        let newIngredientBasketId = 1
-      
-        let newIngredient = {
-            name: newIngredientName,
-            basket_id: newIngredientBasketId
-        }
-        confObj = {
-            method: 'POST',
-            headers: {
-              "Content-Type":"application/json",
-              "Accept":"application/json"
-              },
-              body: JSON.stringify(newIngredient)}
-        
-          fetch('http://localhost:3000/ingredients', confObj)
-              .then(res => res.json())
-              .then(data => console.log(data))
-                // console.log(obj);
-            }
-        
-        // else return false;
-        // console.log(basket.x)
-        })
-    }
     objectTouch()
     
     window.requestAnimationFrame(update)
 }
 
+newBasket()
 update()
+countdown()
 window.addEventListener("keydown", function(e) {
     // console.log(basket.x);
     // console.log(basket)
@@ -203,7 +196,7 @@ window.addEventListener("keydown", function(e) {
 
 
 function countdown() {
-    var seconds = 30;
+    var seconds = 15;
     function tick() {
         var counter = document.getElementById("counter");
         seconds--;
@@ -221,5 +214,45 @@ function countdown() {
     }
     tick();
 }
-countdown()
+
+
+function objectTouch() {
+    objects.forEach(obj => {
+    // console.log(obj)
+    let objRight = obj.x + obj.w
+    let objBottom = obj.y + obj.h
+    let basketRight = basket.x + basket.w
+    let basketBottom = basket.y + basket.h
+
+    if(objRight > basket.x && basketRight > obj.x && objBottom > basket.y && basketBottom > obj.y){ 
+        
+    let newIngredientName = obj.name
+    let newIngredientBasketId = newBasketObject.id
+  
+    let newIngredient = {
+        name: newIngredientName,
+        basket_id: newIngredientBasketId
+    }
+    confObj = {
+        method: 'POST',
+        headers: {
+          "Content-Type":"application/json",
+          "Accept":"application/json"
+          },
+          body: JSON.stringify(newIngredient)}
+    
+      fetch('http://localhost:3000/ingredients', confObj)
+        //   .then(res => res.json())
+        }
+    
+    // else return false;
+    // console.log(basket.x)
+    })
+}
+
+
+
+
+
+
 }
