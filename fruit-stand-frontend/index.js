@@ -1,12 +1,8 @@
-// document.addEventListener("DOMContentLoaded", () => {
-//     // movingBasket()
-//     // loadForm()
-// })
-
 const loadForm = (user) => {
     let nameForm = document.querySelector('.new-player-form')
     let existingNameForm = document.querySelector('.existing-player')
     let errorElement = document.getElementById('error')
+
     nameForm.addEventListener('submit', (e) => {
         e.preventDefault()
         let messages = []
@@ -32,20 +28,21 @@ const loadForm = (user) => {
         .then(newPlayer => {
             user = newPlayer
             let gameButton = document.getElementById('game-button')
-gameButton.addEventListener('click', () => {
-    body.innerHTML = ''
-    body.innerHTML = `<div id='counter'>30s</div>
-    <div class='row' id="game">
-    <canvas id='canvas'  width="200" height="100" ></canvas>
-</div>`
-    
-    playGame(user)
-})
+            gameButton.addEventListener('click', () => {
+                body.innerHTML = ''
+                body.innerHTML = `<div id='counter'>30s</div>
+                <div class='row' id="game">
+                <canvas id='canvas'  width="200" height="100" ></canvas>
+                </div>`
+            
+                playGame(user)
+            })
         })
         
         
         //create function that verifies if user is already in game or not
     })
+    
     const loadNewPlayer = () =>{
         let nameForm = document.querySelector('.new-player-form')
         let errorElement = document.getElementById('error')
@@ -74,9 +71,9 @@ gameButton.addEventListener('click', () => {
             .then(res => res.json())
             .then(newPlayer => renderPlayerCard(newPlayer.id))
             //create function that verifies if user is already in game or not
-            })
-        }
+        })
     }
+}
     
 
 const renderPlayerCard = (newPlayer) => {
@@ -94,13 +91,3 @@ const renderPlayerCard = (newPlayer) => {
     container.append(playerHeader, playerScore)
     // console.log(newPlayer)
 }
-
-
-//create header for player name 
-//create area for high score
-//append all these attributes to container card to be displayed
-
-
-// 2 forms log in and sign up 
-// sign up creates user and signs in
-// log in needs to be matched to database names (interpolate with name given to match object in db)
