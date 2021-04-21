@@ -32,52 +32,61 @@ const loadForm = (user) => {
         .then(newPlayer => {
             user = newPlayer
             let gameButton = document.getElementById('game-button')
-gameButton.addEventListener('click', () => {
-    body.innerHTML = ''
-    body.innerHTML = `<div id='counter'>30s</div>
-    <div class='row' id="game">
-    <canvas id='canvas'  width="200" height="100" ></canvas>
-</div>`
-    
-    playGame(user)
-})
+            gameButton.addEventListener('click', () => {
+                body.innerHTML = ''
+                body.innerHTML = `<div id='counter'>30s</div>
+                <div class='row' id="game">
+                <canvas id='canvas'  width="200" height="100" ></canvas>
+            </div>`
+                
+                playGame(user)
+            })
+        })   
+    })
+
+    existingNameForm.addEventListener('submit', (e) => {
+        e.preventDefault()
+        let messages = []
+        let newName = e.target.name.value
+        if (newName.value === '' || newName.value == null) {
+            messages.push('Name is required')
+        }
+        if (messages.length > 0) {
+            e.preventDefault()
+            errorElement.innerText = messages.join(', ')
+        }
+        // console.log(newName)
+        fetch('http://localhost:3000/users', {
+            method: 'POST',
+            headers: {
+                'Content-Type':'application/json',
+                'Accept':'application/json'
+            },
+            body: JSON.stringify({
+                name: newName
+            })
+        })
+        .then(res => res.json())
+        .then(newPlayer => {
+            user = newPlayer
+            let gameButton = document.getElementById('game-button')
+            gameButton.addEventListener('click', () => {
+                body.innerHTML = ''
+                body.innerHTML = `<div id='counter'>30s</div>
+                <div class='row' id="game">
+                <canvas id='canvas'  width="200" height="100" ></canvas>
+            </div>`
+                
+                playGame(user)
+            })
+        })
+        //create function that verifies if user is already in game or not
         })
         
-        
-        //create function that verifies if user is already in game or not
-    })
-    const loadNewPlayer = () =>{
-        let nameForm = document.querySelector('.new-player-form')
-        let errorElement = document.getElementById('error')
-        nameForm.addEventListener('submit', (e) => {
-            e.preventDefault()
-            let messages = []
-            let newName = e.target.name.value
-            if (newName.value === '' || newName.value == null) {
-                messages.push('Name is required')
-            }
-            if (messages.length > 0) {
-                e.preventDefault()
-                errorElement.innerText = messages.join(', ')
-            }
-            // console.log(newName)
-            fetch('http://localhost:3000/users', {
-                method: 'POST',
-                headers: {
-                    'Content-Type':'application/json',
-                    'Accept':'application/json'
-                },
-                body: JSON.stringify({
-                    name: newName
-                })
-            })
-            .then(res => res.json())
-            .then(newPlayer => renderPlayerCard(newPlayer.id))
-            //create function that verifies if user is already in game or not
-            })
-        }
     }
     
+
+
 
 const renderPlayerCard = (newPlayer) => {
     let div = document.querySelector('.column')
