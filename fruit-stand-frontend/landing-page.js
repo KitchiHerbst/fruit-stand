@@ -12,9 +12,28 @@ let head = document.getElementById('head')
 body.innerHTML = 
 `<div class = 'row'>
         <div class = 'column'>
+        <div id='error'></div>
             <div class='container'>
                 <form class='new-player-form'>
                     <h3>Enter Your Name</h3>
+                    <input
+                    type='text'
+                    name='name'
+                    value=''
+                    placeholder='Enter Name Here'
+                    class='input-text'
+                    />
+                    <br />
+                    <input
+                    type='submit'
+                    name='submit'
+                    value='Les Gooo'
+                    class='submit'
+                    />
+                    </form>
+                    <br>
+                    <form class='Existing-Player'>
+                    <h3>Existing Player/h3>
                     <input
                     type='text'
                     name='name'

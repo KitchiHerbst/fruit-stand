@@ -14,7 +14,8 @@ class UsersController < ApplicationController
     end
 
     def create
-        user = User.create(name: params[:name])
+        user = User.create(name: params[:name]).valid?
         render json: user
+        # user.errors.size
     end
 end
