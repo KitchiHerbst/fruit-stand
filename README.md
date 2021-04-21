@@ -55,9 +55,21 @@ JSON responses
 1. user can login or create account 
 5. user can edit name
 <!-- 2. fruit falls  -->
-3. basket can catch fruit/bugs
+<!-- 3. basket can catch fruit/bugs -->
 4. calculate high score from basket
 6. Doesnt redirect or refresh page 
+7. organize the layout of the main screen 
+    * left box with login or sign up that leads to the user credentials(show username, have an edit name button with form, show high score) 
+    * middle box with gameplay instructions(how to) 
+    * right box with high scores(top ten or so?)
+8. style
+    * put the title at top of screen above all three boxes/cards
+    * make each card/box unique(background color for each box)
+    * maybe make the timer bigger with different text color and font
+    * style play game button 
+    * give page a background
+
+
 <!-- 7. timed rounds -->
 
 ### Stretch Goals
