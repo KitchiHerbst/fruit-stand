@@ -47,43 +47,64 @@ const loadForm = (user) => {
         let newName = e.target.name.value
         if (newName === '' || newName == null) {
             messages.push('Name is required')
-            // need to check against all users array and 
-            // change the message to say they are ready to play if name is valid
-            // or this name already exists please try again
         }
         if (messages.length > 0) {
-            // e.preventDefault()
             errorElement.innerText = messages.join(', ')
         }
-
-            let gameButton = document.getElementById('game-button')
-            gameButton.addEventListener('click', () => {
-                body.innerHTML = ''
-                body.innerHTML = `<div id='counter'>30s</div>
-                 <div class='row' id="game">
-                <canvas id='canvas'  width="200" height="100" ></canvas>
-                </div>`
-                playGame(user)
-            })
+        let gameButton = document.getElementById('game-button')
+        gameButton.addEventListener('click', () => {
+            body.innerHTML = ''
+            body.innerHTML = `<div id='counter'>30s</div>
+                <div class='row' id="game">
+            <canvas id='canvas'  width="200" height="100" ></canvas>
+            </div>`
+            playGame(user)
+        })
 
         allUsers(newName)
-        showUserProfileCredentials(user)
         // allUsers defined below
     })
         
-    const renderPlayerCard = (newPlayer) => {
+    const renderPlayerCard = (user) => {
+        console.log(user)
         let div = document.querySelector('.column')
         // div.className = 'card p-2 m-2'
         let container = document.querySelector('.container')
         container.innerHTML = ''
         
         let playerHeader = document.createElement('h2')
-        playerHeader.innerHTML = newPlayer.name
+        playerHeader.innerHTML = user.name
+
+        let editNameBtn = document.createElement('button')
+        editNameBtn.innerText = 'Edit Name'
+        editNameBtn.addEventListener('click', () => {
+            editForm = document.createElement('form')
+            editForm.innerHTML = `<input type="text"></input>
+            <button class = 'button' >Change Name</button>`
+            container.append(editForm)
+            editForm.addEventListener('submit', (e) =>{
+                e.preventDefault()
+                editedName = e.target[0].value
+                fetch(`http://localhost:3000/users/${user.id}`, {
+                    method: 'PATCH',
+                    headers: {
+                        'Content-Type':'application/json',
+                        'Accept':'application/json'
+                    },
+                    body: JSON.stringify({
+                        name: editedName
+                    })
+                })
+                .then(res => res.json())
+                .then(newPlayerData => renderPlayerCard(newPlayerData))
+            })
+
+        })
 
         let playerScore = document.createElement('p')
-        playerScore.innerHTML = newPlayer.score
+        playerScore.innerHTML = user.score
         // debugger
-        container.append(playerHeader, playerScore)
+        container.append(playerHeader, playerScore, editNameBtn)
         // console.log(newPlayer)
     }
 
@@ -97,28 +118,30 @@ const loadForm = (user) => {
         users.forEach(player => {
             if (player.name === newName){
                 user = player
+                renderPlayerCard(user)
                 // console.log(user)
                 // ^^^shows correct user   
             } 
+
         })
     }
 
-    const showUserProfileCredentials = (user) => {
-        let userBox = document.querySelector('.container')
-        userBox.innerHTML = ''
-        userBox.innerHTML = `<h3>show user.name</h3>
-        </br>
-        <ul class = 'user-scores'>
-        </br>
-        <li>score1</li>
-        <li>score2</li>
-        <li>score3</li>
-        </ul>
-        </br>
-        </br>
-        <button>Edit</button>`
-        // console.log(user)
-        // shows undefined
-    }
+    // const showUserProfileCredentials = (user) => {
+    //     let userBox = document.querySelector('.container')
+    //     userBox.innerHTML = ''
+    //     userBox.innerHTML = `<h3>show user.name</h3>
+    //     </br>
+    //     <ul class = 'user-scores'>
+    //     </br>
+    //     <li>score1</li>
+    //     <li>score2</li>
+    //     <li>score3</li>
+    //     </ul>
+    //     </br>
+    //     </br>
+    //     <button>Edit</button>`
+    //     // console.log(user)
+    //     // shows undefined
+    // }
 
 }

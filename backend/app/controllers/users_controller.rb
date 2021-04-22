@@ -19,6 +19,18 @@ class UsersController < ApplicationController
         # user.errors.size
     end
 
+    # def edit
+    #     user = User.find(params[:id])
+        
+    # end
+
+    def update
+        user = User.find(params[:id])
+        user.update(name: params[:name])
+        render json: user
+    end
+
+
     def user_params 
         params.require(:user).permit(:name)
     end

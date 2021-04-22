@@ -75,10 +75,11 @@ const showScorePage = (basket, user, count) => {
         load(user)
     })
     // debugger
-    console.log(count)
-    console.log(basket)
+    // console.log(count)
+    // console.log(basket)
+    console.log(user)
     // console.log(user.baskets.last)
-    console.log(basket.ingredients)
+    // console.log(basket.ingredients)
 
     
 }
