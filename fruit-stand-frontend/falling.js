@@ -1,6 +1,6 @@
 //creating the canvas element so we can have moving objects on it
 const playGame = (user) => {
-    
+    console.log(user)
 
     let canvas = document.getElementById('canvas')
     canvas.width = window.innerWidth
@@ -245,7 +245,7 @@ const playGame = (user) => {
                     },
                     body: JSON.stringify(newIngredient)
                 }
-                fetch('http://localhost:3000/ingredients', confObj)
+                // fetch('http://localhost:3000/ingredients', confObj)
             }
         })
     }

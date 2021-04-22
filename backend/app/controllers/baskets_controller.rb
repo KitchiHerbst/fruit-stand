@@ -10,6 +10,12 @@ class BasketsController < ApplicationController
         render json: basket
     end
 
+    def update
+        basket = Basket.find_by(id: params[:id])
+        basket.update(score: params[:score])
+        render json: basket
+    end
+
     def basket_params
         params.require(:basket).permit(:user_id)
     end
