@@ -14,6 +14,7 @@ const loadForm = (user) => {
             e.preventDefault()
             errorElement.innerText = messages.join(', ')
         }
+        
         fetch('http://localhost:3000/users', {
             method: 'POST',
             headers: {
@@ -38,6 +39,8 @@ const loadForm = (user) => {
                 playGame(user)
                 // playGame defined on falling.js
             })
+            
+            renderPlayerCard(user)
         })//create function that verifies if user is already in game or not
     })
    
@@ -65,7 +68,8 @@ const loadForm = (user) => {
     })
     
     const renderPlayerCard = (user) => {
-        let scores = user.baskets.forEach(basket => basket.score)
+        let scores = []
+        user.baskets.forEach(basket => scores.push(basket.score))
         console.log(scores)
 
         let div = document.querySelector('.column')
@@ -98,10 +102,8 @@ const loadForm = (user) => {
             })
         })
         let playerScore = document.createElement('p')
-        playerScore.innerHTML = user.score
-        // debugger
+        playerScore.innerText = `High Score: ${Math.max(...scores)}`
         container.append(playerHeader, playerScore, editNameBtn)
-        // console.log(newPlayer)
     }
 
     const allUsers = (newName) => {
@@ -115,9 +117,7 @@ const loadForm = (user) => {
             if (player.name === newName){
                 user = player
 
-                renderPlayerCard(user)
-                // console.log(user)
-                // ^^^shows correct user   
+                renderPlayerCard(user) 
             } 
 
         })

@@ -1,17 +1,16 @@
 .column {
-  position: relative;
-  /* gap: 90px;
-  padding: 20px 30px; */
-  display: table-cell; 
-  column-width: 50%;
-  /* border: 5px rgb(34, 23, 15);  */
-  /* border-right-style: solid;
+  /* gap: 90px; */
+  padding: 20px 30px;
+  display: table-cell;
+  /* column-width: 300px; */
+  border-right-style: solid;
   color: rgb(22, 21, 21);
   font-family: monospace;
   font-weight: 900;
   text-shadow: 4px 4px 5px red;
-  float: right; */ */ */
-  /* width: 33.33%; */
+  float: center right;
+  width: 33.33%;
+
 }
   
 .row {

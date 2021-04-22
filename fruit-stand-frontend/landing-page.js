@@ -9,10 +9,8 @@ const load = (user) => {let body = document.getElementById('body')
 // let head = document.getElementById('head')
     body.className = 'body'
     body.innerHTML =` 
-        <div class = 'row'>
-            <div class = 'column'>
-                <h3>High Scores</h3>
-            </div>
+        
+            
             <div class = 'column'>
                 <h3>Fruit Catch</h3>
                 <button id='game-button'>Play Game</button>
@@ -60,16 +58,27 @@ const load = (user) => {let body = document.getElementById('body')
                     </div>
                 </div>
             </div>
-        </div>
+            <div class = 'column' id='high-scores'>
+                <h3>High Scores</h3>
+            </div>
+        
     `
+    renderBaskets()
     loadForm()
     // loadForm defined on index.js
 }
 
 const showScorePage = (basket, user, count) => {
+    if(count<0){
+        body.innerHTML = ''
+        body.innerHTML = `<h1 id='score-count'>Your Score is ${count}, hope you like roaches!</h1>
+        <button id='return-home' class='button'>Return<button>`
+    }else {
     body.innerHTML = ''
     body.innerHTML = `<h1 id='score-count'>Your Score is ${count}</h1>
     <button id='return-home' class='button'>Return<button>`
+    }
+
     button = document.getElementById('return-home')
     button.addEventListener('click', () => {
         load(user)
@@ -87,3 +96,29 @@ const showScorePage = (basket, user, count) => {
     
 }
 
+const renderBaskets = () => {
+    fetch('http://localhost:3000/baskets')
+    .then(res => res.json())
+    .then(basketsData => displayHighScores(basketsData))
+}
+
+const displayHighScores = (basketsData) => {
+    let scoreTable = document.getElementById('high-scores')
+    let tenScores = []
+    basketsData.forEach(basket => {
+            tenScores.push(basket)
+        
+        tenScores.sort(function(a, b){return b.score-a.score})
+    })
+    for(let i = 0; i<5; i++){
+        fetch(`http://localhost:3000/users/${tenScores[i].user_id}`)
+        .then(res => res.json())
+        .then(user =>  {
+            let p = document.createElement('p')
+            p.innerText = user.name + '--' + tenScores[i].score 
+            scoreTable.append(p)
+        })
+       
+        
+    }
+}

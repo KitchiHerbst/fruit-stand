@@ -1,6 +1,6 @@
 //creating the canvas element so we can have moving objects on it
 const playGame = (user) => {
-    console.log(user)
+    // console.log(user)
 
     let canvas = document.getElementById('canvas')
     canvas.width = window.innerWidth
@@ -22,7 +22,7 @@ const playGame = (user) => {
     let stupidRoachImg = document.createElement('img')
     stupidRoachImg.src = 'Squashed-Roach.png'
 
-    let numOfObjects = 3
+    let numOfObjects = 30
     let objects = []
     //creating an array so that i can select a random fruit image when creating a new fruit
     let imgArray = [bananaImg,blueberryImg,strawberryImg]
@@ -116,7 +116,7 @@ const playGame = (user) => {
         this.h = 100
 
         this.show = function(){
-            context.drawImage(basketImg,this.x,this.y,50,25)
+            context.drawImage(basketImg,this.x,this.y,150,100)
         }
         this.left = function(){
             this.x = this.x-35
