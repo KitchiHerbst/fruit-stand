@@ -63,7 +63,6 @@ const loadForm = (user) => {
             </div>`
             playGame(user)
         })
-
         allUsers(newName)
         // allUsers defined below
     })
@@ -104,14 +103,11 @@ const loadForm = (user) => {
                 .then(res => res.json())
                 .then(newPlayerData => renderPlayerCard(newPlayerData))
             })
-
         })
 
         let playerScore = document.createElement('p')
         playerScore.innerText = `High Score: ${Math.max(...scores)}`
-        // debugger
         container.append(playerHeader, playerScore, editNameBtn)
-        // console.log(newPlayer)
     }
 
     const allUsers = (newName) => {
@@ -125,30 +121,9 @@ const loadForm = (user) => {
             if (player.name === newName){
                 user = player
 
-                renderPlayerCard(user)
-                // console.log(user)
-                // ^^^shows correct user   
+                renderPlayerCard(user) 
             } 
 
         })
     }
-
-    // const showUserProfileCredentials = (user) => {
-    //     let userBox = document.querySelector('.container')
-    //     userBox.innerHTML = ''
-    //     userBox.innerHTML = `<h3>show user.name</h3>
-    //     </br>
-    //     <ul class = 'user-scores'>
-    //     </br>
-    //     <li>score1</li>
-    //     <li>score2</li>
-    //     <li>score3</li>
-    //     </ul>
-    //     </br>
-    //     </br>
-    //     <button>Edit</button>`
-    //     // console.log(user)
-    //     // shows undefined
-    // }
-
 }
