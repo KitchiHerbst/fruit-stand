@@ -1,82 +1,94 @@
 let user = undefined
 document.addEventListener('DOMContentLoaded', () => {
-    load(user)  
+    fruitCatchHomeScreen()
+    // load(user)  
 })
-
-
 
 const load = (user) => {let body = document.getElementById('body')
 // let head = document.getElementById('head')
-    body.className = 'body'
-    body.innerHTML =` 
-        
-            
-            <div class = 'column'>
-                <h3>Fruit Catch</h3>
-                <button id='game-button'>Play Game</button>
-            </div>
-            <div class = 'column'>
-                <h3> Players Info </h3>
-                    <div id='error'></div>
-                        <div class='container'>
-                            <form class='new-player-form'>
-                                <h3>Enter New Name</h3>
-                                <input
-                                type='text'
-                                name='name'
-                                value=''
-                                placeholder='Enter Name Here'
-                                class='input-text'
-                                />
-                                <br />
-                                <input
-                                type='submit'
-                                name='submit'
-                                value='Les Gooo'
-                                class='submit'
-                                />
-                            </form>
-                            <br>
-                            <form class='existing-player'>
-                                <h3>Existing Player</h3>
-                                <input
-                                type='text'
-                                name='name'
-                                value=''
-                                placeholder='Enter Name Here'
-                                class='input-text'
-                                />
-                                <br />
-                                <input
-                                type='submit'
-                                name='submit'
-                                value='Les Gooo'
-                                class='submit'
-                                />
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class = 'column' id='high-scores'>
-                <h3>High Scores</h3>
-            </div>
-        
+    body.className = 'bodyyyy'
+    body.innerHTML =`
+    <div id='dashboard'>   
+        <div class='column' id='left'>
+            <h3> Players Info </h3>
+                <div id='error'></div>
+        <div class='container'>
+            <form class='new-player-form'>
+                <h3>Enter New Name</h3>
+                <input
+                type='text'
+                name='name'
+                value=''
+                placeholder='Enter Name Here'
+                class='input-text'
+                />
+                <br />
+                <input
+                type='submit'
+                name='submit'
+                value='Les Gooo'
+                class='submit button'
+                />
+            </form>
+            <br>
+            <form class='existing-player'>
+                <h3>Existing Player</h3>
+                <input
+                type='text'
+                name='name'
+                value=''
+                placeholder='Enter Name Here'
+                class='input-text'
+                />
+                <br />
+                <input
+                type='submit'
+                name='submit'
+                value='Les Gooo'
+                class='submit button'
+                />
+            </form>
+        </div>
+        </div>
+        <div class = 'column' id='center'>
+            <h3>Fruit Catch</h3>
+            <p id='instructions'>How To Play:<br>
+            Enter name to play.<br>
+            Use arrow keys, left and right, to catch fruit
+            and avoid the roaches.</p>
+            <button class='button' id='game-button'>Play Game</button>
+        </div>
+        <div class = 'column' id='right'>
+            <h3>High Scores</h3>
+        </div>  
+    </div>
     `
     renderBaskets()
     loadForm()
     // loadForm defined on index.js
 }
 
+const fruitCatchHomeScreen = () => {
+    body.className = 'bodyyyy'
+    body.innerHTML = `<h1>FRUIT CATCH</h1>
+    </br>
+    <button class='button' id='enter-game'>Enter Game</button>`
+    enterGameBtn = document.getElementById('enter-game')
+    enterGameBtn.addEventListener('click', () => {
+        // console.log('click')
+        load(user)
+    })
+}
+
 const showScorePage = (basket, user, count) => {
     if(count<0){
         body.innerHTML = ''
         body.innerHTML = `<h1 id='score-count'>Your Score is ${count}, hope you like roaches!</h1>
-        <button id='return-home' class='button'>Return<button>`
+        <button id='return-home' class='button'>Return</button>`
     }else {
     body.innerHTML = ''
     body.innerHTML = `<h1 id='score-count'>Your Score is ${count}</h1>
-    <button id='return-home' class='button'>Return<button>`
+    <button id='return-home' class='button'>Return</button>`
     }
 
     button = document.getElementById('return-home')
@@ -91,9 +103,6 @@ const showScorePage = (basket, user, count) => {
         },
         body: JSON.stringify({score: count})
     })
-
-
-    
 }
 
 const renderBaskets = () => {
@@ -103,11 +112,10 @@ const renderBaskets = () => {
 }
 
 const displayHighScores = (basketsData) => {
-    let scoreTable = document.getElementById('high-scores')
+    let scoreTable = document.getElementById('right')
     let tenScores = []
     basketsData.forEach(basket => {
-            tenScores.push(basket)
-        
+        tenScores.push(basket)
         tenScores.sort(function(a, b){return b.score-a.score})
     })
     for(let i = 0; i<5; i++){
@@ -115,10 +123,8 @@ const displayHighScores = (basketsData) => {
         .then(res => res.json())
         .then(user =>  {
             let p = document.createElement('p')
-            p.innerText = user.name + '--' + tenScores[i].score 
+            p.innerText = user.name + '' + "  " +tenScores[i].score
             scoreTable.append(p)
         })
-       
-        
     }
 }

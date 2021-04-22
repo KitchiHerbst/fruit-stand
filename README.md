@@ -52,8 +52,8 @@ JSON responses
 
 
 ## MVP Deliverables
-1. user can login or create account 
-5. user can edit name
+<!-- 1. user can login or create account  -->
+<!-- 5. user can edit name -->
 <!-- 2. fruit falls  -->
 <!-- 3. basket can catch fruit/bugs -->
 4. calculate high score from basket
