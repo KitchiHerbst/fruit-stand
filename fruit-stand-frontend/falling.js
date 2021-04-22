@@ -1,6 +1,6 @@
 //creating the canvas element so we can have moving objects on it
 const playGame = (user) => {
-    console.log(user)
+    
 
     let canvas = document.getElementById('canvas')
     canvas.width = window.innerWidth
@@ -116,7 +116,7 @@ const playGame = (user) => {
         this.h = 100
 
         this.show = function(){
-            context.drawImage(basketImg,this.x,this.y,150,100)
+            context.drawImage(basketImg,this.x,this.y,50,25)
         }
         this.left = function(){
             this.x = this.x-35
@@ -209,11 +209,13 @@ const playGame = (user) => {
                 setTimeout(tick, 1000);
             } else {
                 alert("Game over");
-                load()
+                showScorePage(newBasketObject, user, count)
             }
         }
         tick();
     }
+    let count = 0 
+
     function objectTouch() {
         objects.forEach(obj => {
             let objRight = obj.x + obj.w
@@ -222,7 +224,12 @@ const playGame = (user) => {
             let basketBottom = basket.y + basket.h
 
             if(objRight > basket.x && basketRight > obj.x && objBottom > basket.y && basketBottom > obj.y){ 
-            
+                if(obj.name === 'fruit'){ 
+                    count = count + 1
+                }else{
+                    count = count - 1
+                }
+
                 let newIngredientName = obj.name
                 let newIngredientBasketId = newBasketObject.id
         

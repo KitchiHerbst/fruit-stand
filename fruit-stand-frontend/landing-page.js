@@ -66,8 +66,20 @@ const load = (user) => {let body = document.getElementById('body')
     // loadForm defined on index.js
 }
 
-const showScorePage = () => {
+const showScorePage = (basket, user, count) => {
     body.innerHTML = ''
-    body.innerHTML = `<h1>Winner!</h1>`
+    body.innerHTML = `<h1 id='score-count'>Your Score is ${count}</h1>
+    <button id='return-home' class='button'>Return<button>`
+    button = document.getElementById('return-home')
+    button.addEventListener('click', () => {
+        load(user)
+    })
+    // debugger
+    console.log(count)
+    console.log(basket)
+    // console.log(user.baskets.last)
+    console.log(basket.ingredients)
+
+    
 }
 

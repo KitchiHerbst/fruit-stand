@@ -7,7 +7,7 @@ const loadForm = (user) => {
         e.preventDefault()
         let messages = []
         let newName = e.target.name.value
-        if (newName.value === '' || newName.value == null) {
+        if (newName === '' || newName == null) {
             messages.push('Name is required')
         }
         if (messages.length > 0) {
@@ -64,7 +64,7 @@ const loadForm = (user) => {
                 <canvas id='canvas'  width="200" height="100" ></canvas>
                 </div>`
                 playGame(user)
-                console.log(user)})
+            })
 
         allUsers(newName)
         showUserProfileCredentials(user)
@@ -117,7 +117,7 @@ const loadForm = (user) => {
         </br>
         </br>
         <button>Edit</button>`
-        console.log(user)
+        // console.log(user)
         // shows undefined
     }
 

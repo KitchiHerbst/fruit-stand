@@ -38,3 +38,11 @@
   background-image: url(IMG_4311.PNG);  background-repeat: no-repeat; background-size: cover; background-position: center;
   background-color: #ccff99;
 }
+
+#score-count {
+  text-align: center;
+  text-emphasis-color: blue;
+  font-family: monospace;
+  font-weight: 900;
+  text-shadow: 4px 4px 5px red;
+}
