@@ -1,11 +1,40 @@
 .column {
-    float: left;
-    width: 33.33%;
-  }
+  gap: 90px;
+  padding: 20px 30px;
+  display: table-cell;
+  column-width: 300px;
+  border-right-style: solid;
+  color: rgb(22, 21, 21);
+  font-family: monospace;
+  font-weight: 900;
+  text-shadow: 4px 4px 5px red;
+  float: right;
+  /* width: 33.33%; */
+}
   
-  /* Clear floats after the columns */
-  .row:after {
-    content: "";
-    display: table;
-    clear: both;
-  }
+.row {
+  width: 100%;
+  content: "";
+  display: table;
+  /* clear: both; */
+}
+
+#error {
+  text-align: center;
+  text-emphasis-color: red;
+}
+
+.container {
+  font-size: medium; 
+}
+  
+.new-player-form {
+  
+  font-family: monospace;
+  text-align: left;
+}
+
+.body{
+  background-image: url(IMG_4311.PNG);  background-repeat: no-repeat; background-size: cover; background-position: center;
+  background-color: #ccff99;
+}
