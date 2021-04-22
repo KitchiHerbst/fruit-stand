@@ -106,8 +106,7 @@ const displayHighScores = (basketsData) => {
     let scoreTable = document.getElementById('high-scores')
     let tenScores = []
     basketsData.forEach(basket => {
-            tenScores.push(basket)
-        
+        tenScores.push(basket)
         tenScores.sort(function(a, b){return b.score-a.score})
     })
     for(let i = 0; i<5; i++){
