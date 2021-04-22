@@ -1,8 +1,4 @@
-
 //creating the canvas element so we can have moving objects on it
-// const game = document.getElementById('game')
-// const playBtn = document.createElement('button')
-// playBtn.innerText='Start Game'
 const playGame = (user) => {
     console.log(user)
 
@@ -26,7 +22,7 @@ const playGame = (user) => {
     let stupidRoachImg = document.createElement('img')
     stupidRoachImg.src = 'Squashed-Roach.png'
 
-    let numOfObjects = 10
+    let numOfObjects = 3
     let objects = []
     //creating an array so that i can select a random fruit image when creating a new fruit
     let imgArray = [bananaImg,blueberryImg,strawberryImg]
@@ -54,11 +50,11 @@ const playGame = (user) => {
 
             let randFall = Math.floor(Math.random()*10)
             this.y = this.y+randFall
-                if(this.y > canvas.height - 100){
-                    this.y = 0
-                    this.x = Math.floor(Math.random()*canvas.width)
-                    this.collisionOccured = false
-                }
+            if(this.y > canvas.height - 100){
+                this.y = 0
+                this.x = Math.floor(Math.random()*canvas.width)
+                this.collisionOccured = false
+            }
         }
 
         //should get me a random number between 0 - 2
@@ -92,11 +88,11 @@ const playGame = (user) => {
             }
             let randFall = Math.floor(Math.random()*15)
             this.y = this.y+randFall
-                if(this.y > canvas.height-100){
-                    this.y = 0
-                    this.x = Math.floor(Math.random()*canvas.width)
-                    this.collisionOccured = false
-                }
+            if(this.y > canvas.height-100){
+                this.y = 0
+                this.x = Math.floor(Math.random()*canvas.width)
+                this.collisionOccured = false
+            }
         }
         this.show = function(){
             context.drawImage(bugImg, this.x, this.y, 100, 100)
@@ -104,13 +100,13 @@ const playGame = (user) => {
 
         let randFall = Math.floor(Math.random()*10)
         this.y = this.y+randFall
-            if(this.y > canvas.height - 115){
-                this.y = 0
-                this.x = Math.floor(Math.random()*canvas.width)
-                this.collisionOccured = false
-                // objects.filter(fruit => fruit !== this)
-                // numOfObjects = numOfObjects + 1
-            }
+        if(this.y > canvas.height - 115){
+            this.y = 0
+            this.x = Math.floor(Math.random()*canvas.width)
+            this.collisionOccured = false
+            // objects.filter(fruit => fruit !== this)
+            // numOfObjects = numOfObjects + 1
+        }
     }
 
     function Basket() {
@@ -143,12 +139,12 @@ const playGame = (user) => {
         }
         let randFall = Math.floor(Math.random()*15)
         this.y = this.y+randFall
-            if(this.y > canvas.height-115){
-                this.y = 0
-                this.x = Math.floor(Math.random()*canvas.width)
-                this.collisionOccured = false
-                // objects.filter(bug => bug !== this)
-            }
+        if(this.y > canvas.height-115){
+            this.y = 0
+            this.x = Math.floor(Math.random()*canvas.width)
+            this.collisionOccured = false
+            // objects.filter(bug => bug !== this)
+        }
     }
 
     let newBasketObject = undefined
@@ -179,6 +175,7 @@ const playGame = (user) => {
         }
         basket.show()
     }
+
     const update = () => {
         draw()
         objectTouch()
@@ -189,6 +186,7 @@ const playGame = (user) => {
     newBasket()
     update()
     countdown()
+
     window.addEventListener("keydown", function(e) {
         if (e.key == "ArrowLeft") {
             if (basket.x > 0){
