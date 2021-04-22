@@ -60,21 +60,17 @@ const loadForm = (user) => {
             </div>`
             playGame(user)
         })
-
         allUsers(newName)
         // allUsers defined below
     })
-        
+    
     const renderPlayerCard = (user) => {
         console.log(user)
         let div = document.querySelector('.column')
-        // div.className = 'card p-2 m-2'
         let container = document.querySelector('.container')
-        container.innerHTML = ''
-        
+        container.innerHTML = '' 
         let playerHeader = document.createElement('h2')
         playerHeader.innerHTML = user.name
-
         let editNameBtn = document.createElement('button')
         editNameBtn.innerText = 'Edit Name'
         editNameBtn.addEventListener('click', () => {
@@ -98,9 +94,7 @@ const loadForm = (user) => {
                 .then(res => res.json())
                 .then(newPlayerData => renderPlayerCard(newPlayerData))
             })
-
         })
-
         let playerScore = document.createElement('p')
         playerScore.innerHTML = user.score
         // debugger
@@ -125,23 +119,4 @@ const loadForm = (user) => {
 
         })
     }
-
-    // const showUserProfileCredentials = (user) => {
-    //     let userBox = document.querySelector('.container')
-    //     userBox.innerHTML = ''
-    //     userBox.innerHTML = `<h3>show user.name</h3>
-    //     </br>
-    //     <ul class = 'user-scores'>
-    //     </br>
-    //     <li>score1</li>
-    //     <li>score2</li>
-    //     <li>score3</li>
-    //     </ul>
-    //     </br>
-    //     </br>
-    //     <button>Edit</button>`
-    //     // console.log(user)
-    //     // shows undefined
-    // }
-
 }
