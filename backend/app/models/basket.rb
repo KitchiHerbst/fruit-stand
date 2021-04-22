@@ -3,5 +3,5 @@ class Basket < ApplicationRecord
   has_many :ingredients
   # has_many :bugs, through: :ingredients
   # has_many :fruits, through: :ingredients
-  serialize :ingredients
+  serialize :ingredients, :user
 end
