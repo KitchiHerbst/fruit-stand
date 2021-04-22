@@ -119,10 +119,10 @@ const playGame = (user) => {
             context.drawImage(basketImg,this.x,this.y,150,100)
         }
         this.left = function(){
-            this.x = this.x-35
+            this.x = this.x-65
         }
         this.right = function(){
-            this.x = this.x+35
+            this.x = this.x+65
         }
     }
 
