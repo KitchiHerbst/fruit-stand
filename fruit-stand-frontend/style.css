@@ -1,23 +1,91 @@
 .column {
-  /* gap: 90px; */
   padding: 20px 30px;
-  display: table-cell;
-  /* column-width: 300px; */
-  border-right-style: solid;
-  color: rgb(22, 21, 21);
+  color: rgb(250, 250, 250);
   font-family: monospace;
-  font-weight: 900;
   text-shadow: 4px 4px 5px red;
-  float: center right;
-  width: 33.33%;
-
 }
-  
-.row {
-  width: 100%;
-  content: "";
-  display: table;
-  /* clear: both; */
+.button {
+  background:#c93434;
+  color:#fff;
+  border:none;
+  position:relative;
+  height:25px;
+  font-size:1em;
+  padding:0 2em;
+  cursor:pointer;
+  transition:800ms ease all;
+  outline:none;
+}
+.button:hover{
+  background:#fff;
+  color:#c93434;
+}
+.button:before,.button:after{
+  content:'';
+  position:absolute;
+  top:0;
+  right:0;
+  height:2px;
+  width:0;
+  background: #c93434;
+  transition:900000ms ease all;
+}
+.button:after{
+  right:inherit;
+  top:inherit;
+  left:0;
+  bottom:0;
+}
+.button:hover:before,.button:hover:after{
+  width:100%;
+  transition:800ms ease all;
+}
+
+
+#instructions{
+  font-size: 21px;
+  color: white;
+}
+
+#dashboard {
+  padding: 5px;
+  position: relative;
+}
+
+#left, #center {
+  width: 33.33%;
+  display: inline-block;
+  box-sizing: border-box;
+}
+
+#center {
+  position: absolute;
+  top: 0;
+  right: 33.33%;
+}
+
+#left {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+#right {
+  position: absolute;
+  top: 0;
+  right: 0;
+  box-sizing: border-box;
+}
+
+#left, #center, #right {
+  background: rgba(1, 1, 31, 0.5);
+  margin: 0;
+  height: 300px;
+  border: 1px solid black;
+}
+
+#right {
+  width: 33.33%;
 }
 
 #error {
@@ -30,12 +98,13 @@
 }
   
 .new-player-form {
-  
   font-family: monospace;
-  text-align: left;
 }
 
-.body{
+.bodyyyy{
+  text-align: center;
+  font-family: monospace;
+  text-shadow: 4px 4px 5px red;
   height: 100%;
   background-image: url(IMG_4311.PNG);  background-repeat: no-repeat; background-size: cover; background-position: center;
   background-color: #ccff99;
@@ -45,6 +114,5 @@
   text-align: center;
   text-emphasis-color: blue;
   font-family: monospace;
-  font-weight: 900;
   text-shadow: 4px 4px 5px red;
 }

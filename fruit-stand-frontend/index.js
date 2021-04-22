@@ -78,6 +78,7 @@ const loadForm = (user) => {
         let playerHeader = document.createElement('h2')
         playerHeader.innerHTML = user.name
         let editNameBtn = document.createElement('button')
+        editNameBtn.className = 'button'
         editNameBtn.innerText = 'Edit Name'
         editNameBtn.addEventListener('click', () => {
             editForm = document.createElement('form')
