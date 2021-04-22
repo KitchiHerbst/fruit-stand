@@ -65,7 +65,9 @@ const loadForm = (user) => {
     })
     
     const renderPlayerCard = (user) => {
-        console.log(user)
+        let scores = user.baskets.forEach(basket => basket.score)
+        console.log(scores)
+
         let div = document.querySelector('.column')
         let container = document.querySelector('.container')
         container.innerHTML = '' 
@@ -112,6 +114,7 @@ const loadForm = (user) => {
         users.forEach(player => {
             if (player.name === newName){
                 user = player
+
                 renderPlayerCard(user)
                 // console.log(user)
                 // ^^^shows correct user   

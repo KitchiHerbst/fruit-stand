@@ -74,12 +74,15 @@ const showScorePage = (basket, user, count) => {
     button.addEventListener('click', () => {
         load(user)
     })
-    // debugger
-    // console.log(count)
-    // console.log(basket)
-    console.log(user)
-    // console.log(user.baskets.last)
-    // console.log(basket.ingredients)
+    fetch(`http://localhost:3000/baskets/${basket.id}`,{
+        method: 'PATCH',
+        headers: {
+            'Content-Type':'application/json',
+            'Accept':'application/json'
+        },
+        body: JSON.stringify({score: count})
+    })
+
 
     
 }
