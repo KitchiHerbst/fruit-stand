@@ -116,9 +116,11 @@ const displayHighScores = (basketsData) => {
     let tenScores = []
     basketsData.forEach(basket => {
         tenScores.push(basket)
-        tenScores.sort(function(a, b){return b.score-a.score})
     })
+    tenScores = tenScores.sort(function(a, b){b.score-a.score})
+    
     for(let i = 0; i<5; i++){
+        tenScores = tenScores.sort(function(a, b){b.score-a.score})
         fetch(`http://localhost:3000/users/${tenScores[i].user_id}`)
         .then(res => res.json())
         .then(user =>  {

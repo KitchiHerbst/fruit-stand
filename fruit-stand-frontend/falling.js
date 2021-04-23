@@ -50,7 +50,7 @@ const playGame = (user) => {
 
             let randFall = Math.floor(Math.random()*10)
             this.y = this.y+randFall
-            if(this.y > canvas.height - 100){
+            if(this.y > canvas.height - 50){
                 this.y = 0
                 this.x = Math.floor(Math.random()*canvas.width)
                 this.collisionOccured = false
@@ -88,7 +88,7 @@ const playGame = (user) => {
             }
             let randFall = Math.floor(Math.random()*15)
             this.y = this.y+randFall
-            if(this.y > canvas.height-100){
+            if(this.y > canvas.height-50){
                 this.y = 0
                 this.x = Math.floor(Math.random()*canvas.width)
                 this.collisionOccured = false
