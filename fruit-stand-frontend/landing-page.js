@@ -51,7 +51,23 @@ const load = (user) => {let body = document.getElementById('body')
         </div>
         </div>
         <div class = 'column' id='center'>
-            <h3>Fruit Catch</h3>
+        <body>
+            <h2>
+            <span>F</span>
+            <span>R</span>
+            <span>U</span>
+            <span>I</span>
+            <span>T</span>
+            <span> </span>
+            <span>C</span>
+            <span>A</span>
+            <span>T</span>
+            <span>C</span>
+            <span>H</span>
+            </h2>
+        </body>
+            <br>
+            <br>
             <p id='instructions'>How To Play:<br>
             Enter name to play.<br>
             Use arrow keys, left and right, to catch fruit
@@ -70,9 +86,24 @@ const load = (user) => {let body = document.getElementById('body')
 
 const fruitCatchHomeScreen = () => {
     body.className = 'bodyyyy'
-    body.innerHTML = `<h1>FRUIT CATCH</h1>
-    </br>
-    <button class='button' id='enter-game'>Enter Game</button>`
+    body.innerHTML = `
+    </br></br></br></br></br></br></br></br></br></br></br>
+    <button class='button' id='enter-game'>Enter Game</button>
+    <body>
+        <h1>
+            <span>F</span>
+            <span>R</span>
+            <span>U</span>
+            <span>I</span>
+            <span>T</span>
+            <span> </span>
+            <span>C</span>
+            <span>A</span>
+            <span>T</span>
+            <span>C</span>
+            <span>H</span>
+        </h1>
+    </body>`
     enterGameBtn = document.getElementById('enter-game')
     enterGameBtn.addEventListener('click', () => {
         // console.log('click')
